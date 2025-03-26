@@ -260,3 +260,74 @@ button:hover {
 #packAnimation.show {
   opacity: 1;
 }
+
+/* Mobile optimisation */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1em;
+    padding: 12px;
+    margin: 8px 0;
+  }
+
+  #moneyDisplay {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+
+  #packAnimation img {
+    width: 100%;
+  }
+
+  #garage {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  #store {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .car-card {
+    padding: 10px;
+  }
+
+  .car-name {
+    font-size: 1em;
+  }
+
+  .car-rarity {
+    font-size: 0.85em;
+  }
+
+  .price {
+    font-size: 0.95em;
+  }
+
+  .buyBtn {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  #devPopup,
+  #redeemPopup,
+  #makeCodePopup {
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
