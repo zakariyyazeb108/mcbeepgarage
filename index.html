@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>McBeep Garage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🚗 McBeep Garage™</h1>
+    <p class="subtitle">Open car packs. Collect thousands of cars. Build your dream garage.</p>
+  </header>
+
+  <main>
+    <div id="devGear" title="Dev Mode">⚙️</div>
+<div id="devPopup" class="hidden">
+  <input type="password" id="devCodeInput" placeholder="Enter dev code">
+  <button id="devSubmit">Enter</button>
+</div>
+<div id="redeemPopup" class="hidden">
+  <input type="text" id="redeemInput" placeholder="Enter 6-digit code">
+  <button id="redeemSubmit">Claim</button>
+</div>
+
+<div id="makeCodePopup" class="hidden">
+  <input type="text" id="makeCodeCar" placeholder="Enter exact car name">
+  <button id="makeCodeSubmit">Generate Code</button>
+</div>
+
+
+    <div class="controls">
+      <button id="collectBtn">🎁 Open Pack</button>
+      <button id="garageBtn">📦 View Garage</button>
+      <button id="storeBtn">🛒 Open Store</button>
+      <button id="redeemBtn">🎟️ Redeem Code</button>
+
+    </div>
+
+    <div id="moneyDisplay">💰 Money: $0</div>
+    <div id="message"></div>
+    <div id="dailyReward" class="hidden">
+      <p>🎉 You claimed your daily login reward: <span id="rewardAmount">$0</span></p>
+    </div>
+    
+    <!-- These are now all outside the controls div 👇 -->
+    <div id="packAnimation" class="hidden"></div>
+    <div id="garage" class="hidden"></div>
+    <div id="store" class="hidden"></div>
+  </main>
+
+  <footer>
+    <p>Powered by McBeep Industries™</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
