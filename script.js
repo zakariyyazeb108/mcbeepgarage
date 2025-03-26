@@ -56,7 +56,8 @@ let money = parseInt(localStorage.getItem("money")) || 0;
 
 
 let garage = JSON.parse(localStorage.getItem("garage")) || [];
-let devMode = false;
+let devMode = localStorage.getItem("devMode") === "true";
+
 
 let pullData = JSON.parse(localStorage.getItem("pullData")) || {};
 let redeemCodes = JSON.parse(localStorage.getItem("redeemCodes")) || {};
@@ -100,10 +101,11 @@ moneyDisplay.textContent = `💰 Money: $${money.toLocaleString()}`;
 function saveGame() {
   localStorage.setItem("money", money);
   localStorage.setItem("garage", JSON.stringify(garage));
-
   localStorage.setItem("pullData", JSON.stringify(pullData));
   localStorage.setItem("redeemCodes", JSON.stringify(redeemCodes));
+  localStorage.setItem("devMode", devMode); // ✅ add this
 }
+
 
 
 
