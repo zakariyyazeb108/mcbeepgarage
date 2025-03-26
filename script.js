@@ -74,6 +74,7 @@ const rarityRewards = {
   rare: 5000,
   legendary: 15000
 };
+const scrapPackBtn = document.getElementById("scrapPackBtn");
 
 const collectBtn = document.getElementById("collectBtn");
 const garageBtn = document.getElementById("garageBtn");
@@ -165,10 +166,15 @@ collectBtn.addEventListener("click", () => {
     return;
   }
 
+
+  
   const newCar = getRandomCar();
   garage.push(newCar);
-money += rarityRewards[newCar.rarity];
-incrementPullCount(); // 👉 do this before updating message
+
+  
+incrementPullCount(); 
+money += rarityRewards[newCar.rarity]; // ❌ REMOVE THIS LINE
+// 👉 do this before updating message
 saveGame();
 
 // Set content first
@@ -202,6 +208,52 @@ if (pullsLeft > 0) {
   }, 2500);
 });
 
+scrapPackBtn.addEventListener("click", () => {
+  hideDailyReward();
+  hideAllViews();
+  packDiv.classList.remove("hidden");
+
+  if (money < 500) {
+    message.innerHTML = "❌ Not enough money for the Scrap Pack.";
+    return;
+  }
+
+  money -= 500;
+
+  // Better odds for Scrap Pack
+  const roll = Math.random() * 100;
+  let rarity;
+  if (roll < 50) rarity = "common";
+  else if (roll < 85) rarity = "rare";
+  else rarity = "legendary";
+
+  const filtered = carPool.filter(car => car.rarity === rarity);
+  const newCar = filtered[Math.floor(Math.random() * filtered.length)];
+
+  garage.push(newCar);
+
+  saveGame();
+
+  packDiv.innerHTML = `
+    🔥 You pulled a <strong class="${newCar.rarity}">${newCar.name}</strong>!
+    <br>
+    <img src="${newCar.image}" alt="${newCar.name}">
+  `;
+
+  packDiv.classList.remove("show");
+  void packDiv.offsetWidth;
+  packDiv.classList.add("show");
+
+  message.innerHTML = `✅ You opened a Scrap Pack!`;
+  moneyDisplay.textContent = `💰 Money: $${money.toLocaleString()}`;
+
+  setTimeout(() => {
+    packDiv.classList.remove("show");
+    setTimeout(() => {
+      packDiv.classList.add("hidden");
+    }, 500);
+  }, 2500);
+});
 
 
 garageBtn.addEventListener("click", () => {
